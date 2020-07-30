@@ -9,9 +9,11 @@ namespace Farm
 
         public string NameFarm { get; set; }
         public string AdressFarm { get; set; }
-        private IEnumerable<object> Horses { get; set; }
-        private IEnumerable<object> SheepFlock { get; set; }
-        private IEnumerable<object> Cows { get; set; }
+        
+        private  List<Horse> Horses = new List<Horse>();
+        private List<Sheep> SheepFlock = new List<Sheep>();
+        private List<Cow> Cows = new List<Cow>();
+
 
         public Farm(string nameFarm, string adressFarm)
         {
@@ -19,36 +21,29 @@ namespace Farm
             AdressFarm = adressFarm;
         }
 
-        static void AddHorse(Animal Hourse)
-        {
-            
-            
-        }
-        static void AddCow(Animal Cow)
-        {
-
-        }
-        static void AddSheep(Animal Sheep)
-        {
-
-        }
+        public void AddHorse(Animal Horse)=>Horses.Add((Horse)Horse);
+        
+        public void AddCow(Animal Cow)=> Cows.Add((Cow)Cow);
+        
+        public void AddSheep(Animal Sheep)=>SheepFlock.Add((Sheep)Sheep);
+        
         public void FullInfo()
         {
-            Console.WriteLine($"Название фермы:{NameFarm} адрес:{AdressFarm}");
+            Console.WriteLine($"\nНазвание фермы:{NameFarm} \tAдрес:{AdressFarm}");
             Console.WriteLine("Табун лошадей:");
             foreach (var obj in Horses)
             {
-                Console.Write($"\t{ obj}");
+                Console.WriteLine($"\t{ obj.Name}");
             }
             Console.WriteLine("Стадо коров:");
             foreach (var obj in Cows)
             {
-                Console.Write($"\t{ obj}");
+                Console.WriteLine($"\t{ obj.Name}");
             }
             Console.WriteLine("Стадо овец:");
             foreach (var obj in SheepFlock)
             {
-                Console.Write($"\t{ obj}");
+                Console.WriteLine($"\t{ obj.Name}");
             }
             
         }
